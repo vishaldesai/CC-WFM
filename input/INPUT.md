@@ -27,11 +27,8 @@ This folder contains sample inputs that conform to `schemas/shiftopt.input.schem
   - Saturday operating hours: 10:00–18:00 (inbound only)
   - Per-interval total demand is capped at 15 agents across all streams
   - Notes on priority weights and solver settings
-    - `priority_rules[].priorities[].understaff_weight` is **optional**:
-      - If omitted, the solver auto-derives a weight from `rank` (defaults: 1→100, 2→10, 3→1, 4→0.3, 5→0.1, else 0.05).
-      - If provided, it overrides the rank-derived default for that (direction, channel) during the window.
-    - `solver.mip_gap` controls the CBC **relative MIP optimality gap**:
-      - Example: `mip_gap: 0.01` allows the solver to stop once it proves the solution is within **1% of optimal** (often faster).
+    - Priority: Time-windowed rules allow prioritizing streams by time of day (e.g., inbound gets higher priority during early hours, outbound voice takes priority later in the day); `understaff_weight` determines penalty for understaffing (auto-derived from `rank` if omitted: 1→100, 2→10, 3→1, 4→0.3, 5→0.1, else 0.05).
+    - `solver.mip_gap` controls the CBC **relative MIP optimality gap**: Example: `mip_gap: 0.01` allows the solver to stop once it proves the solution is within **1% of optimal** (often faster).
 
 - `sample_input.stress.json`
   - Same demand/supply structure as small, but with higher variability in the generated demand profile

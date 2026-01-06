@@ -41,9 +41,9 @@ def write_html_report(
             y=["required", "allocated", "understaff"],
             title="Full horizon — total demand vs supply per interval",
         )
-        fig_total.update_layout(xaxis_title="datetime (local)", yaxis_title="agents")
+        fig_total.update_layout(xaxis_title="datetime (local)", yaxis_title="agents", height=600)
         fig_total.update_traces(mode="lines")  # no markers/edges
-        fig_total.update_xaxes(showgrid=False, zeroline=False, rangeslider_visible=True)
+        fig_total.update_xaxes(showgrid=False, zeroline=False, rangeslider_visible=True, rangeslider_thickness=0.05)
         fig_total.update_yaxes(showgrid=False, zeroline=False)
         figs.append(fig_total)
 
@@ -58,11 +58,11 @@ def write_html_report(
             x="dt",
             y="required",
             color="stream",
-            title="Full horizon — demand by stream",
+            title="Full horizon — demand by direction-channel",
         )
-        fig_stream.update_layout(xaxis_title="datetime (local)", yaxis_title="required agents")
+        fig_stream.update_layout(xaxis_title="datetime (local)", yaxis_title="required agents", height=600)
         fig_stream.update_traces(mode="lines")
-        fig_stream.update_xaxes(showgrid=False, zeroline=False, rangeslider_visible=True)
+        fig_stream.update_xaxes(showgrid=False, zeroline=False, rangeslider_visible=True, rangeslider_thickness=0.05)
         fig_stream.update_yaxes(showgrid=False, zeroline=False)
         figs.append(fig_stream)
 
@@ -73,9 +73,9 @@ def write_html_report(
             color="stream",
             title="Full horizon — supply (allocated) by stream",
         )
-        fig_stream2.update_layout(xaxis_title="datetime (local)", yaxis_title="allocated agents")
+        fig_stream2.update_layout(xaxis_title="datetime (local)", yaxis_title="allocated agents", height=600)
         fig_stream2.update_traces(mode="lines")
-        fig_stream2.update_xaxes(showgrid=False, zeroline=False, rangeslider_visible=True)
+        fig_stream2.update_xaxes(showgrid=False, zeroline=False, rangeslider_visible=True, rangeslider_thickness=0.05)
         fig_stream2.update_yaxes(showgrid=False, zeroline=False)
         figs.append(fig_stream2)
 
@@ -98,7 +98,7 @@ def write_html_report(
     sg_names = sg_full["skill_group_name"].astype(str).tolist()
 
     sg_table_html = (
-        "<h3>Demand vs Supply by skill group (time on x-axis, synced to zoom/date filter)</h3>"
+        "<h3>Table (Demand vs Supply)</h3>"
         "<div id='sg-table-meta' style='font-size:12px; color:#666; margin:6px 0 10px 0;'></div>"
         "<div id='sg-table-wrap' style='overflow:auto; max-width:100%; max-height:520px; border:1px solid #e5e5e5; background:#fff; border-radius:8px'>"
         "<div id='sg-grid'></div>"
