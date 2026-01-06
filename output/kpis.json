@@ -1,0 +1,25 @@
+{
+  "status": "Optimal",
+  "objective_value": 816.0,
+  "total_understaff": 456.0,
+  "employee_shift_rows": 314,
+  "understaff_rows": 281,
+  "understaff_by_skill_group": {
+    "billing_v": 224.0,
+    "billing_c": 122.0,
+    "billing_e": 60.0,
+    "recover_v": 50.0
+  },
+  "understaff_by_stream": {
+    "inbound:voice": 224.0,
+    "inbound:chat": 122.0,
+    "inbound:email": 60.0,
+    "outbound:voice": 50.0
+  },
+  "required_by_stream": {
+    "inbound:voice": 2068,
+    "inbound:chat": 1108,
+    "outbound:voice": 800,
+    "inbound:email": 548
+  }
+}
